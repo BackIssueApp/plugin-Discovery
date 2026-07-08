@@ -46,11 +46,16 @@
       api.onSettingsLoad(() => sync());
     }
 
-    // Sidebar entry point (the Library menu's plugin area).
-    // Host SVG icon set (matches core nav); glyph fallback for older hosts.
-    const btn = api.addMenuAction('Discover', openDiscover, (api.icon && api.icon('compass')) || '✧', { section: 'Discover' });
-    btn.id = 'discover-btn';
-    btn.title = 'Discover new & upcoming comics';
+    // Sidebar entry point (the Library menu's plugin area) — only for users who
+    // can add series to the library. Discover's whole purpose is one-click Add
+    // (POST /api/collection/add-cv, a library.manage action); a read-only viewer
+    // couldn't act on it, so don't show it. (Older hosts without api.can still
+    // get the button.)
+    if (typeof api.can !== 'function' || api.can('library.manage')) {
+      const btn = api.addMenuAction('Discover', openDiscover, (api.icon && api.icon('compass')) || '✧', { section: 'Discover' });
+      btn.id = 'discover-btn';
+      btn.title = 'Discover new & upcoming comics';
+    }
 
     function openDiscover() {
       if (!overlay) buildOverlay();
