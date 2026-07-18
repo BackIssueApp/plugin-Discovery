@@ -21,7 +21,9 @@
 
     // Settings block (Settings → Sources area — the only plugin settings slot).
     // Appended, never innerHTML-assigned, so it can't clobber other plugins.
-    const setSlot = api.slot('settings-plugin-sources');
+    // Not a download source — mount in the dedicated Plugins settings tab when
+    // the core has one, falling back to the Sources slot on older cores.
+    const setSlot = api.slot('settings-plugin-panels') || api.slot('settings-plugin-sources');
     if (setSlot) {
       const block = document.createElement('div');
       block.className = 'src-block';

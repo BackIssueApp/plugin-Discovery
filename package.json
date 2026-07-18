@@ -1,6 +1,6 @@
 {
   "name": "discovery",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "ComicVine-driven Discover drawer: new releases, latest additions, personalized picks, and popular series with one-click add",
   "type": "module",
   "private": true,
