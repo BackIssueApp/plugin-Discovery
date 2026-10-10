@@ -9,7 +9,7 @@
     { key: 'new', label: 'New Series', blurb: 'First issues launching around now.' },
     { key: 'latest', label: 'Latest', blurb: 'Recently-released series across all publishers.' },
     { key: 'foryou', label: 'For You', blurb: 'New #1s from publishers you already collect.' },
-    { key: 'popular', label: 'Popular', blurb: 'New #1s from major publishers (a heuristic — ComicVine has no popularity data).' },
+    { key: 'popular', label: 'Popular', blurb: 'Series ranked by how many readers are following them.' },
   ];
 
   window.BackIssue.registerClient((api) => {
@@ -30,7 +30,7 @@
       block.innerHTML =
         '<div class="src-toggle">' +
           '<label class="switch"><input id="set-discoveryEnabled" type="checkbox" checked><span class="switch__track"></span></label>' +
-          '<div class="src-toggle__text"><b>Discovery</b><span class="modal__note src-toggle__note">A “Discover” button in the header opens new &amp; upcoming comics (from ComicVine) to add in one click.</span></div>' +
+          '<div class="src-toggle__text"><b>Discovery</b><span class="modal__note src-toggle__note">A “Discover” button in the header opens new &amp; upcoming comics to add in one click.</span></div>' +
         '</div>' +
         '<div id="discovery-config" class="src-config">' +
           '<div class="fields-row">' +
@@ -38,7 +38,7 @@
             '<label class="field"><span>Upcoming (days)</span><input id="set-discoveryUpcomingDays" type="number" min="7" max="120" step="7" placeholder="42"></label>' +
             '<label class="field"><span>Cache (hours)</span><input id="set-discoveryCacheHours" type="number" min="1" max="168" step="1" placeholder="12"></label>' +
           '</div>' +
-          '<p class="modal__note">Feeds are cached this long to spare the ComicVine rate limit. “Popular” ranks new #1s by major publisher (a heuristic — ComicVine has no popularity metric).</p>' +
+          '<p class="modal__note">Feeds are cached this long to keep them fast. “Popular” ranks series by how many readers are following them.</p>' +
         '</div>';
       setSlot.appendChild(block);
       const en = block.querySelector('#set-discoveryEnabled');

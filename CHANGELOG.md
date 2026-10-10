@@ -8,6 +8,11 @@ by the maintainers when changes merge, so concurrent PRs don't conflict here.
 
 ## [Unreleased]
 
+### Changed
+- **Popular** now ranks series by how many readers are following them, not by
+  publisher. When that signal isn't available it falls back to the previous
+  major-publisher ordering, so the tab always has something to show.
+
 ## [1.0.2] — 2026-07-18
 
 ### Changed

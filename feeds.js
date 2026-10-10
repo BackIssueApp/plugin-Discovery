@@ -44,6 +44,27 @@ export function issueToItem(i) {
   };
 }
 
+// A CV volume (from the Popular feed) -> a feed item. The volume already
+// carries its publisher and (when known) a follower count and pick-of-the-week
+// flag, so no enrichment pass is needed.
+export function volumeToItem(v) {
+  const publisher = (v.publisher && (v.publisher.name || v.publisher)) || null;
+  return {
+    cvVolumeId: v.id ?? null,
+    name: v.name || 'Unknown',
+    issueNumber: null,
+    storeDate: null,
+    coverUrl: v.image?.small_url || v.image?.original_url || v.image?.thumb_url || null,
+    publisher,
+    startYear: v.start_year ?? null,
+    pulls: Number(v.pulls) || 0,
+    potw: !!v.potw,
+    isManga: isManga(publisher),
+    isWestern: isWestern(publisher),
+    owned: false,
+  };
+}
+
 // Collapse issues to one item per volume, keeping the earliest store_date (the
 // launch). Drops items with no volume id (can't be added).
 export function dedupByVolume(items) {
@@ -181,9 +202,21 @@ export async function buildForYou(cv, enrich, ownedPublishers, { from, to, limit
     .sort((a, b) => String(b.storeDate || '').localeCompare(String(a.storeDate || '')));
 }
 
-// New #1s ranked major-Western-publisher first — a transparent popularity
-// heuristic (CV has no real popularity metric, and LOCG is Cloudflare-walled).
+// Recently-shipping series ranked by how many readers follow them. The ranking
+// comes from the hosted metadata service (already sorted, with a follower count
+// per series); when that signal isn't available it falls back to a transparent
+// heuristic — new #1s, major Western publishers first — so the tab always has
+// something to show.
 export async function buildPopular(cv, enrich, { from, to, limit = 100 } = {}) {
+  try {
+    const { results } = await cv.list('popular', { limit });
+    const ranked = (results || [])
+      .filter((v) => Number(v.pulls) > 0)   // only rows that actually carry the signal
+      .map(volumeToItem);
+    if (ranked.length) return ranked;       // server returns them in rank order
+  } catch {
+    // fall through to the heuristic
+  }
   const items = await buildNewSeries(cv, enrich, { from, to, limit });
   return items
     .filter((i) => majorRank(i.publisher) !== Infinity)

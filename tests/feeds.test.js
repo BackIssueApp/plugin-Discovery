@@ -5,7 +5,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   isoDay, issueToItem, dedupByVolume, normPublisher, majorRank, applyEnrichment,
-  isManga, isWestern, buildNewSeries, buildLatest, buildForYou, buildPopular,
+  isManga, isWestern, buildNewSeries, buildLatest, buildForYou, buildPopular, volumeToItem,
 } from '../feeds.js';
 
 const issue = (vid, name, num, date, cover) => ({
@@ -125,6 +125,45 @@ test('buildPopular drops non-majors and ranks majors first', async () => {
   ], { 1: 'Some Indie Press', 2: 'DC Comics', 3: 'Marvel' });
   const out = await buildPopular(cv, passthroughEnrich(cv), { from: '2026-06-01', to: '2026-08-01' });
   assert.deepEqual(out.map((i) => i.name), ['Marvel Book', 'DC Book']); // Marvel(0) before DC(1); indie dropped
+});
+
+test('buildPopular uses the server follower ranking when it is available', async () => {
+  // A CV whose /popular returns volumes already ranked, each with a follower count.
+  const cv = {
+    async list(resource) {
+      if (resource === 'popular') {
+        return { results: [
+          { id: 10, name: 'Most Followed', publisher: { name: 'Image' }, pulls: 5000, potw: true },
+          { id: 11, name: 'Less Followed', publisher: { name: 'Marvel' }, pulls: 1200 },
+          { id: 12, name: 'No Signal', publisher: { name: 'DC Comics' }, pulls: 0 },
+        ] };
+      }
+      return { results: [], total: 0 };
+    },
+  };
+  const out = await buildPopular(cv, async () => new Map(), { from: '2026-06-01', to: '2026-08-01' });
+  assert.deepEqual(out.map((i) => i.name), ['Most Followed', 'Less Followed']); // server order kept, zero dropped
+  assert.equal(out[0].pulls, 5000);
+  assert.equal(out[0].potw, true);
+  assert.equal(out[0].publisher, 'Image');
+});
+
+test('buildPopular falls back to the heuristic when no follower data comes back', async () => {
+  // /popular returns nothing usable -> old major-publisher heuristic.
+  const cv = fakeCv([
+    issue(1, 'Indie', '1', '2026-07-10'),
+    issue(2, 'Marvel Book', '1', '2026-07-10'),
+  ], { 1: 'Some Indie Press', 2: 'Marvel' });
+  const out = await buildPopular(cv, passthroughEnrich(cv), { from: '2026-06-01', to: '2026-08-01' });
+  assert.deepEqual(out.map((i) => i.name), ['Marvel Book']); // indie dropped, heuristic path
+});
+
+test('volumeToItem shapes a popular volume and flags manga', () => {
+  const it = volumeToItem({ id: 7, name: 'Berserk', publisher: { name: 'Shueisha' }, pulls: 99, image: { small_url: 'x.jpg' } });
+  assert.equal(it.cvVolumeId, 7);
+  assert.equal(it.pulls, 99);
+  assert.equal(it.isManga, true);
+  assert.equal(it.coverUrl, 'x.jpg');
 });
 
 test('isoDay returns yyyy-mm-dd offset from a fixed base', () => {
