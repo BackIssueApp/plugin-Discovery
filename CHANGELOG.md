@@ -8,6 +8,8 @@ by the maintainers when changes merge, so concurrent PRs don't conflict here.
 
 ## [Unreleased]
 
+## [1.1.0] — 2026-10-09
+
 ### Changed
 - **Popular** now ranks series by how many readers are following them, not by
   publisher. When that signal isn't available it falls back to the previous
