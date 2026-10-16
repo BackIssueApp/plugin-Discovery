@@ -8,6 +8,11 @@ by the maintainers when changes merge, so concurrent PRs don't conflict here.
 
 ## [Unreleased]
 
+### Changed
+- Discover now says plainly that it needs the built-in metadata service or
+  ComicVine when another metadata source is selected, instead of failing
+  part-way through building a feed.
+
 ## [1.1.0] — 2026-10-09
 
 ### Changed

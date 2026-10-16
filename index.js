@@ -32,6 +32,9 @@ export default function register(api) {
   // shares a disk cache, so only the first-ever build of a window is slow.
   async function buildFeed(tab) {
     const cv = makeCvClient(config); // throws if CV isn't configured — caller handles
+    // The feeds are ComicVine list queries; a provider without them (Metron,
+    // a plugin's) cannot drive Discover.
+    if (typeof cv.list !== 'function') throw new Error('Discover needs the built-in metadata service or ComicVine as the metadata source');
     // Enrich generously so New Series (100) and Latest (80) items get a publisher
     // (needed to flag/hide manga); cached to disk, so the cost is paid once,
     // mostly on the background warm.
