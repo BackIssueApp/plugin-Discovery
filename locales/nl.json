@@ -46,5 +46,12 @@
     "add": "+ Toevoegen",
     "adding": "Toevoegen…",
     "added": "✓ Toegevoegd"
+  },
+  "_shared": {
+    "plugins": {
+      "discovery": {
+        "description": "Ontdekken-paneel: nieuwe uitgaven, laatste toevoegingen, persoonlijke tips en populaire reeksen, met één klik toe te voegen"
+      }
+    }
   }
 }

@@ -46,5 +46,12 @@
     "add": "+ Añadir",
     "adding": "Añadiendo…",
     "added": "✓ Añadido"
+  },
+  "_shared": {
+    "plugins": {
+      "discovery": {
+        "description": "Panel Descubrir: novedades, últimas incorporaciones, selecciones personalizadas y series populares, añadidas con un clic"
+      }
+    }
   }
 }

@@ -46,5 +46,12 @@
     "add": "+ Hinzufügen",
     "adding": "Wird hinzugefügt …",
     "added": "✓ Hinzugefügt"
+  },
+  "_shared": {
+    "plugins": {
+      "discovery": {
+        "description": "Entdecken-Leiste: Neuerscheinungen, zuletzt hinzugefügt, persönliche Empfehlungen und beliebte Reihen, mit einem Klick hinzufügen"
+      }
+    }
   }
 }

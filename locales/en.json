@@ -18,10 +18,22 @@
     "close": "Close (Esc)"
   },
   "tabs": {
-    "new": { "label": "New Series", "blurb": "First issues launching around now." },
-    "latest": { "label": "Latest", "blurb": "Recently-released series across all publishers." },
-    "foryou": { "label": "For You", "blurb": "New #1s from publishers you already collect." },
-    "popular": { "label": "Popular", "blurb": "Series ranked by how many readers are following them." }
+    "new": {
+      "label": "New Series",
+      "blurb": "First issues launching around now."
+    },
+    "latest": {
+      "label": "Latest",
+      "blurb": "Recently-released series across all publishers."
+    },
+    "foryou": {
+      "label": "For You",
+      "blurb": "New #1s from publishers you already collect."
+    },
+    "popular": {
+      "label": "Popular",
+      "blurb": "Series ranked by how many readers are following them."
+    }
   },
   "feed": {
     "loading": "Loading…",
@@ -34,5 +46,12 @@
     "add": "+ Add",
     "adding": "Adding…",
     "added": "✓ Added"
+  },
+  "_shared": {
+    "plugins": {
+      "discovery": {
+        "description": "Discover drawer: new releases, latest additions, personalized picks, and popular series with one-click add"
+      }
+    }
   }
 }

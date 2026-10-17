@@ -46,5 +46,12 @@
     "add": "+ Aggiungi",
     "adding": "Aggiunta…",
     "added": "✓ Aggiunto"
+  },
+  "_shared": {
+    "plugins": {
+      "discovery": {
+        "description": "Pannello Scopri: nuove uscite, ultime aggiunte, consigli personalizzati e serie popolari da aggiungere con un clic"
+      }
+    }
   }
 }

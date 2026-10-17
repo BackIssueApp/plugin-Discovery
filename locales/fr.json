@@ -46,5 +46,12 @@
     "add": "+ Ajouter",
     "adding": "Ajout…",
     "added": "✓ Ajouté"
+  },
+  "_shared": {
+    "plugins": {
+      "discovery": {
+        "description": "Volet Découvrir : nouveautés, derniers ajouts, sélections personnalisées et séries populaires, à ajouter en un clic"
+      }
+    }
   }
 }
