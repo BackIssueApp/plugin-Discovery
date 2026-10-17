@@ -1,0 +1,57 @@
+{
+  "menu": {
+    "label": "Odkrywaj",
+    "title": "Odkrywaj nowe i nadchodzące komiksy"
+  },
+  "settings": {
+    "intro": "Przycisk „Odkrywaj” w nagłówku otwiera nowe i nadchodzące komiksy do dodania jednym kliknięciem.",
+    "windowDays": "Okno nowości ± (dni)",
+    "upcomingDays": "Nadchodzące (dni)",
+    "cacheHours": "Pamięć podręczna (godziny)",
+    "note": "Kanały są przechowywane w pamięci podręcznej przez ten czas, aby działały szybko. „Popularne” szereguje serie według liczby czytelników, którzy je obserwują."
+  },
+  "drawer": {
+    "label": "Odkrywaj komiksy",
+    "title": "Odkrywaj",
+    "westernTitle": "Pokazuj tylko wydawców zachodnich (USA/UK) — ukrywa mangę i inne zagraniczne komiksy",
+    "westernOnly": "Tylko zachodnie",
+    "close": "Zamknij (Esc)"
+  },
+  "tabs": {
+    "new": {
+      "label": "Nowe serie",
+      "blurb": "Pierwsze zeszyty, które ukazują się właśnie teraz."
+    },
+    "latest": {
+      "label": "Najnowsze",
+      "blurb": "Niedawno wydane serie wszystkich wydawców."
+    },
+    "foryou": {
+      "label": "Dla ciebie",
+      "blurb": "Nowe numery 1 od wydawców, których już zbierasz."
+    },
+    "popular": {
+      "label": "Popularne",
+      "blurb": "Serie uszeregowane według liczby obserwujących je czytelników."
+    }
+  },
+  "feed": {
+    "loading": "Wczytywanie…",
+    "loadFailed": "Nie udało się wczytać: {error}",
+    "disabled": "Odkrywanie jest wyłączone. Włącz je w <b>Ustawienia → Odkrywanie</b>.",
+    "empty": "Na razie nic tu nie ma — spróbuj później lub poszerz okno w ustawieniach."
+  },
+  "card": {
+    "inCollection": "✓ W kolekcji",
+    "add": "+ Dodaj",
+    "adding": "Dodawanie…",
+    "added": "✓ Dodano"
+  },
+  "_shared": {
+    "plugins": {
+      "discovery": {
+        "description": "Panel odkrywania: nowe wydania, najnowsze dodatki, spersonalizowane propozycje i popularne serie z dodawaniem jednym kliknięciem"
+      }
+    }
+  }
+}

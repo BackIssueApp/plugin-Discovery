@@ -1,0 +1,57 @@
+{
+  "menu": {
+    "label": "发现",
+    "title": "发现新出和即将推出的漫画"
+  },
+  "settings": {
+    "intro": "顶栏的“发现”按钮会打开新出和即将推出的漫画，一键即可添加。",
+    "windowDays": "新作范围 ±（天）",
+    "upcomingDays": "即将推出（天）",
+    "cacheHours": "缓存（小时）",
+    "note": "为保证速度，内容流会缓存这么长时间。“热门”按关注读者的数量对系列排序。"
+  },
+  "drawer": {
+    "label": "发现漫画",
+    "title": "发现",
+    "westernTitle": "仅显示欧美（美国/英国）出版商——隐藏日漫和其他外国漫画",
+    "westernOnly": "仅欧美",
+    "close": "关闭（Esc）"
+  },
+  "tabs": {
+    "new": {
+      "label": "新系列",
+      "blurb": "近期刚刚推出的第 1 期。"
+    },
+    "latest": {
+      "label": "最新",
+      "blurb": "所有出版商最近发行的系列。"
+    },
+    "foryou": {
+      "label": "为你推荐",
+      "blurb": "来自你已收藏的出版商的新第 1 期。"
+    },
+    "popular": {
+      "label": "热门",
+      "blurb": "按关注读者数量排序的系列。"
+    }
+  },
+  "feed": {
+    "loading": "加载中…",
+    "loadFailed": "无法加载：{error}",
+    "disabled": "“发现”已关闭。请在<b>设置 → 发现</b>中启用。",
+    "empty": "目前还没有内容——稍后再试，或在设置中扩大时间范围。"
+  },
+  "card": {
+    "inCollection": "✓ 已在收藏中",
+    "add": "+ 添加",
+    "adding": "添加中…",
+    "added": "✓ 已添加"
+  },
+  "_shared": {
+    "plugins": {
+      "discovery": {
+        "description": "“发现”抽屉：新发行、最新入库、个性化推荐和热门系列，一键添加"
+      }
+    }
+  }
+}
