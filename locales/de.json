@@ -1,0 +1,50 @@
+{
+  "menu": {
+    "label": "Entdecken",
+    "title": "Neue und kommende Comics entdecken"
+  },
+  "settings": {
+    "intro": "Ein „Entdecken“-Knopf in der Kopfzeile öffnet neue und kommende Comics, die sich mit einem Klick hinzufügen lassen.",
+    "windowDays": "Neu/±-Fenster (Tage)",
+    "upcomingDays": "Demnächst (Tage)",
+    "cacheHours": "Cache (Stunden)",
+    "note": "Feeds werden so lange zwischengespeichert, damit sie schnell bleiben. „Beliebt“ sortiert Reihen danach, wie viele Leser ihnen folgen."
+  },
+  "drawer": {
+    "label": "Comics entdecken",
+    "title": "Entdecken",
+    "westernTitle": "Nur westliche Verlage (USA/UK) zeigen; blendet Manga und andere ausländische Comics aus",
+    "westernOnly": "Nur westliche",
+    "close": "Schließen (Esc)"
+  },
+  "tabs": {
+    "new": {
+      "label": "Neue Reihen",
+      "blurb": "Erste Hefte, die gerade erscheinen."
+    },
+    "latest": {
+      "label": "Aktuell",
+      "blurb": "Kürzlich erschienene Reihen aller Verlage."
+    },
+    "foryou": {
+      "label": "Für dich",
+      "blurb": "Neue Nr. 1 von Verlagen, die du schon sammelst."
+    },
+    "popular": {
+      "label": "Beliebt",
+      "blurb": "Reihen, sortiert danach, wie viele Leser ihnen folgen."
+    }
+  },
+  "feed": {
+    "loading": "Wird geladen …",
+    "loadFailed": "Laden fehlgeschlagen: {error}",
+    "disabled": "Entdecken ist ausgeschaltet. Unter <b>Einstellungen → Entdecken</b> einschalten.",
+    "empty": "Gerade nichts da: später noch einmal versuchen oder das Fenster in den Einstellungen vergrößern."
+  },
+  "card": {
+    "inCollection": "✓ In der Sammlung",
+    "add": "+ Hinzufügen",
+    "adding": "Wird hinzugefügt …",
+    "added": "✓ Hinzugefügt"
+  }
+}

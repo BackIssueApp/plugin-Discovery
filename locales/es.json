@@ -1,0 +1,50 @@
+{
+  "menu": {
+    "label": "Descubrir",
+    "title": "Descubre cómics nuevos y próximos"
+  },
+  "settings": {
+    "intro": "Un botón «Descubrir» en la cabecera abre cómics nuevos y próximos para añadirlos con un clic.",
+    "windowDays": "Ventana nuevo/± (días)",
+    "upcomingDays": "Próximos (días)",
+    "cacheHours": "Caché (horas)",
+    "note": "Los feeds se guardan en caché este tiempo para que sean rápidos. «Populares» ordena las series según cuántos lectores las siguen."
+  },
+  "drawer": {
+    "label": "Descubrir cómics",
+    "title": "Descubrir",
+    "westernTitle": "Mostrar solo editoriales occidentales (EE. UU./Reino Unido); oculta manga y otros cómics extranjeros",
+    "westernOnly": "Solo occidentales",
+    "close": "Cerrar (Esc)"
+  },
+  "tabs": {
+    "new": {
+      "label": "Series nuevas",
+      "blurb": "Primeros números que salen por estas fechas."
+    },
+    "latest": {
+      "label": "Recientes",
+      "blurb": "Series publicadas recientemente por todas las editoriales."
+    },
+    "foryou": {
+      "label": "Para ti",
+      "blurb": "Nuevos n.º 1 de editoriales que ya coleccionas."
+    },
+    "popular": {
+      "label": "Populares",
+      "blurb": "Series ordenadas según cuántos lectores las siguen."
+    }
+  },
+  "feed": {
+    "loading": "Cargando…",
+    "loadFailed": "No se pudo cargar: {error}",
+    "disabled": "Descubrir está desactivado. Actívalo en <b>Ajustes → Descubrir</b>.",
+    "empty": "Nada por ahora; inténtalo más tarde o amplía la ventana en Ajustes."
+  },
+  "card": {
+    "inCollection": "✓ En la colección",
+    "add": "+ Añadir",
+    "adding": "Añadiendo…",
+    "added": "✓ Añadido"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "menu": {
+    "label": "Scopri",
+    "title": "Scopri fumetti nuovi e in arrivo"
+  },
+  "settings": {
+    "intro": "Un pulsante «Scopri» nell’intestazione apre i fumetti nuovi e in arrivo da aggiungere con un clic.",
+    "windowDays": "Finestra nuovi/± (giorni)",
+    "upcomingDays": "In arrivo (giorni)",
+    "cacheHours": "Cache (ore)",
+    "note": "I feed restano in cache per questo tempo, così sono veloci. «Popolari» ordina le serie per numero di lettori che le seguono."
+  },
+  "drawer": {
+    "label": "Scopri fumetti",
+    "title": "Scopri",
+    "westernTitle": "Mostra solo editori occidentali (USA/Regno Unito); nasconde manga e altri fumetti stranieri",
+    "westernOnly": "Solo occidentali",
+    "close": "Chiudi (Esc)"
+  },
+  "tabs": {
+    "new": {
+      "label": "Nuove serie",
+      "blurb": "Primi albi in uscita in questo periodo."
+    },
+    "latest": {
+      "label": "Recenti",
+      "blurb": "Serie uscite di recente da tutti gli editori."
+    },
+    "foryou": {
+      "label": "Per te",
+      "blurb": "Nuovi n. 1 di editori che già collezioni."
+    },
+    "popular": {
+      "label": "Popolari",
+      "blurb": "Serie ordinate per numero di lettori che le seguono."
+    }
+  },
+  "feed": {
+    "loading": "Caricamento…",
+    "loadFailed": "Impossibile caricare: {error}",
+    "disabled": "Scopri è disattivato. Attivalo in <b>Impostazioni → Scopri</b>.",
+    "empty": "Niente per ora: riprova più tardi o allarga la finestra nelle impostazioni."
+  },
+  "card": {
+    "inCollection": "✓ In collezione",
+    "add": "+ Aggiungi",
+    "adding": "Aggiunta…",
+    "added": "✓ Aggiunto"
+  }
+}

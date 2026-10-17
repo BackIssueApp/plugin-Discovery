@@ -34,7 +34,7 @@ export default function register(api) {
     const cv = makeCvClient(config); // throws if CV isn't configured — caller handles
     // The feeds are ComicVine list queries; a provider without them (Metron,
     // a plugin's) cannot drive Discover.
-    if (typeof cv.list !== 'function') throw new Error('Discover needs the built-in metadata service or ComicVine as the metadata source');
+    if (typeof cv.list !== 'function') throw new Error('Discover needs the built-in metadata service or a direct source as the metadata source');
     // Enrich generously so New Series (100) and Latest (80) items get a publisher
     // (needed to flag/hide manga); cached to disk, so the cost is paid once,
     // mostly on the background warm.
@@ -66,8 +66,8 @@ export default function register(api) {
       const owned = collection.ownedVolumeIds();
       res.json({ tab, items: items.map((i) => ({ ...i, owned: owned.has(i.cvVolumeId) })) });
     } catch (e) {
-      const msg = e?.rateLimited ? 'ComicVine is rate-limited right now — try again shortly.'
-        : /no ComicVine API keys/.test(String(e?.message)) ? 'ComicVine isn’t configured (add an API key in Settings).'
+      const msg = e?.rateLimited ? 'The metadata source is rate-limited right now — try again shortly.'
+        : /no ComicVine API keys/.test(String(e?.message)) ? 'The metadata source isn’t configured (set one up in Settings → Metadata).'
         : String(e?.message || e);
       res.json({ items: [], error: msg });
     }

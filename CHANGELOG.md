@@ -8,6 +8,19 @@ by the maintainers when changes merge, so concurrent PRs don't conflict here.
 
 ## [Unreleased]
 
+### Added
+
+- **Translated UI.** The Discover drawer, its tabs and the settings card
+  follow the language picked under Profile → Language on BackIssue builds
+  newer than 0.9.0, English on older ones. Translations ship for French,
+  German, Spanish, Italian, Portuguese and Dutch in `locales/`.
+
+### Changed
+
+- The messages shown when Discover cannot build a feed no longer name a
+  metadata database; they say the metadata source is missing, rate-limited
+  or not one that offers these feeds.
+
 ### Changed
 - Discover now says plainly that it needs the built-in metadata service or
   ComicVine when another metadata source is selected, instead of failing

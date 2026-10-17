@@ -1,0 +1,38 @@
+{
+  "menu": {
+    "label": "Discover",
+    "title": "Discover new & upcoming comics"
+  },
+  "settings": {
+    "intro": "A “Discover” button in the header opens new & upcoming comics to add in one click.",
+    "windowDays": "New/±window (days)",
+    "upcomingDays": "Upcoming (days)",
+    "cacheHours": "Cache (hours)",
+    "note": "Feeds are cached this long to keep them fast. “Popular” ranks series by how many readers are following them."
+  },
+  "drawer": {
+    "label": "Discover comics",
+    "title": "Discover",
+    "westernTitle": "Show only Western (US/UK) publishers — hides manga and other foreign comics",
+    "westernOnly": "Western only",
+    "close": "Close (Esc)"
+  },
+  "tabs": {
+    "new": { "label": "New Series", "blurb": "First issues launching around now." },
+    "latest": { "label": "Latest", "blurb": "Recently-released series across all publishers." },
+    "foryou": { "label": "For You", "blurb": "New #1s from publishers you already collect." },
+    "popular": { "label": "Popular", "blurb": "Series ranked by how many readers are following them." }
+  },
+  "feed": {
+    "loading": "Loading…",
+    "loadFailed": "Couldn’t load: {error}",
+    "disabled": "Discovery is turned off. Enable it in <b>Settings → Discovery</b>.",
+    "empty": "Nothing here right now — try again later, or widen the window in Settings."
+  },
+  "card": {
+    "inCollection": "✓ In collection",
+    "add": "+ Add",
+    "adding": "Adding…",
+    "added": "✓ Added"
+  }
+}

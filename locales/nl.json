@@ -1,0 +1,50 @@
+{
+  "menu": {
+    "label": "Ontdekken",
+    "title": "Ontdek nieuwe en aankomende comics"
+  },
+  "settings": {
+    "intro": "Een knop ‘Ontdekken’ in de kopbalk opent nieuwe en aankomende comics om met één klik toe te voegen.",
+    "windowDays": "Venster nieuw/± (dagen)",
+    "upcomingDays": "Aankomend (dagen)",
+    "cacheHours": "Cache (uren)",
+    "note": "Feeds blijven zo lang in de cache om snel te blijven. ‘Populair’ rangschikt reeksen op het aantal lezers dat ze volgt."
+  },
+  "drawer": {
+    "label": "Comics ontdekken",
+    "title": "Ontdekken",
+    "westernTitle": "Alleen westerse uitgevers (VS/VK) tonen; verbergt manga en andere buitenlandse comics",
+    "westernOnly": "Alleen westers",
+    "close": "Sluiten (Esc)"
+  },
+  "tabs": {
+    "new": {
+      "label": "Nieuwe reeksen",
+      "blurb": "Eerste nummers die nu verschijnen."
+    },
+    "latest": {
+      "label": "Nieuwste",
+      "blurb": "Onlangs verschenen reeksen van alle uitgevers."
+    },
+    "foryou": {
+      "label": "Voor jou",
+      "blurb": "Nieuwe nr. 1’s van uitgevers die je al verzamelt."
+    },
+    "popular": {
+      "label": "Populair",
+      "blurb": "Reeksen gerangschikt op het aantal lezers dat ze volgt."
+    }
+  },
+  "feed": {
+    "loading": "Laden…",
+    "loadFailed": "Laden mislukt: {error}",
+    "disabled": "Ontdekken staat uit. Zet het aan in <b>Instellingen → Ontdekken</b>.",
+    "empty": "Nu even niets; probeer het later opnieuw of vergroot het venster in Instellingen."
+  },
+  "card": {
+    "inCollection": "✓ In de verzameling",
+    "add": "+ Toevoegen",
+    "adding": "Toevoegen…",
+    "added": "✓ Toegevoegd"
+  }
+}

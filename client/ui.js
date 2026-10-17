@@ -5,6 +5,7 @@
 // and Escape/backdrop handling (mirrors the app's drawer pattern). Cards add a
 // series straight to the collection via core's /api/collection/add-cv.
 (function () {
+  // Tab labels and blurbs are catalog keys + their English (see tr below).
   const TABS = [
     { key: 'new', label: 'New Series', blurb: 'First issues launching around now.' },
     { key: 'latest', label: 'Latest', blurb: 'Recently-released series across all publishers.' },
@@ -14,6 +15,12 @@
 
   window.BackIssue.registerClient((api) => {
     const esc = api.escapeHtml;
+    // Translations: api.t when the host has it (BackIssue > 0.9.0), the inline
+    // English otherwise. Catalog: locales/<lang>.json, namespace "discovery".
+    const fill = (s, p) => (p ? String(s).replace(/\{(\w+)\}/g, (m, k) => (p[k] === undefined || p[k] === null ? m : String(p[k]))) : String(s));
+    const tr = (key, en, params) => { if (typeof api.t !== 'function') return fill(en, params); const v = api.t('discovery.' + key, params); return v === 'discovery.' + key ? fill(en, params) : v; };
+    const trh = (key, en, params) => (typeof api.th === 'function' && api.t('discovery.' + key) !== 'discovery.' + key ? api.th('discovery.' + key, params) : fill(en, params));
+    const te = (key, en, params) => esc(tr(key, en, params)); // for innerHTML
     let overlay = null, gridEl = null, tabsEl = null, blurbEl = null;
     let active = 'new';
     let lastItems = [];                                       // last fetched feed, for re-filtering
@@ -30,15 +37,15 @@
       block.innerHTML =
         '<div class="src-toggle">' +
           '<label class="switch"><input id="set-discoveryEnabled" type="checkbox" checked><span class="switch__track"></span></label>' +
-          '<div class="src-toggle__text"><b>Discovery</b><span class="modal__note src-toggle__note">A “Discover” button in the header opens new &amp; upcoming comics to add in one click.</span></div>' +
+          '<div class="src-toggle__text"><b>Discovery</b><span class="modal__note src-toggle__note">' + te('settings.intro', 'A “Discover” button in the header opens new & upcoming comics to add in one click.') + '</span></div>' +
         '</div>' +
         '<div id="discovery-config" class="src-config">' +
           '<div class="fields-row">' +
-            '<label class="field"><span>New/±window (days)</span><input id="set-discoveryWindowDays" type="number" min="7" max="180" step="7" placeholder="42"></label>' +
-            '<label class="field"><span>Upcoming (days)</span><input id="set-discoveryUpcomingDays" type="number" min="7" max="120" step="7" placeholder="42"></label>' +
-            '<label class="field"><span>Cache (hours)</span><input id="set-discoveryCacheHours" type="number" min="1" max="168" step="1" placeholder="12"></label>' +
+            '<label class="field"><span>' + te('settings.windowDays', 'New/±window (days)') + '</span><input id="set-discoveryWindowDays" type="number" min="7" max="180" step="7" placeholder="42"></label>' +
+            '<label class="field"><span>' + te('settings.upcomingDays', 'Upcoming (days)') + '</span><input id="set-discoveryUpcomingDays" type="number" min="7" max="120" step="7" placeholder="42"></label>' +
+            '<label class="field"><span>' + te('settings.cacheHours', 'Cache (hours)') + '</span><input id="set-discoveryCacheHours" type="number" min="1" max="168" step="1" placeholder="12"></label>' +
           '</div>' +
-          '<p class="modal__note">Feeds are cached this long to keep them fast. “Popular” ranks series by how many readers are following them.</p>' +
+          '<p class="modal__note">' + te('settings.note', 'Feeds are cached this long to keep them fast. “Popular” ranks series by how many readers are following them.') + '</p>' +
         '</div>';
       setSlot.appendChild(block);
       const en = block.querySelector('#set-discoveryEnabled');
@@ -54,9 +61,9 @@
     // couldn't act on it, so don't show it. (Older hosts without api.can still
     // get the button.)
     if (typeof api.can !== 'function' || api.can('library.manage')) {
-      const btn = api.addMenuAction('Discover', openDiscover, (api.icon && api.icon('compass')) || '✧', { section: 'Discover' });
+      const btn = api.addMenuAction(tr('menu.label', 'Discover'), openDiscover, (api.icon && api.icon('compass')) || '✧', { section: 'Discover' });
       btn.id = 'discover-btn';
-      btn.title = 'Discover new & upcoming comics';
+      btn.title = tr('menu.title', 'Discover new & upcoming comics');
     }
 
     function openDiscover() {
@@ -76,12 +83,12 @@
       overlay.className = 'discover';
       overlay.innerHTML =
         '<div class="discover__backdrop"></div>' +
-        '<div class="discover__panel" role="dialog" aria-label="Discover comics">' +
+        '<div class="discover__panel" role="dialog" aria-label="' + te('drawer.label', 'Discover comics') + '">' +
           '<div class="discover__head">' +
-            '<div class="discover__title">✨ Discover</div>' +
+            '<div class="discover__title">✨ ' + te('drawer.title', 'Discover') + '</div>' +
             '<div class="discover__tabs"></div>' +
-            '<label class="discover__manga" title="Show only Western (US/UK) publishers — hides manga and other foreign comics"><input type="checkbox" class="discover__manga-cb"' + (westernOnly ? ' checked' : '') + '> Western only</label>' +
-            '<button class="discover__close" title="Close (Esc)">✕</button>' +
+            '<label class="discover__manga" title="' + te('drawer.westernTitle', 'Show only Western (US/UK) publishers — hides manga and other foreign comics') + '"><input type="checkbox" class="discover__manga-cb"' + (westernOnly ? ' checked' : '') + '> ' + te('drawer.westernOnly', 'Western only') + '</label>' +
+            '<button class="discover__close" title="' + te('drawer.close', 'Close (Esc)') + '">✕</button>' +
           '</div>' +
           '<div class="discover__blurb"></div>' +
           '<div class="discover__grid"></div>' +
@@ -93,7 +100,7 @@
 
       for (const t of TABS) {
         const b = document.createElement('button');
-        b.className = 'discover__tab'; b.dataset.tab = t.key; b.textContent = t.label;
+        b.className = 'discover__tab'; b.dataset.tab = t.key; b.textContent = tr('tabs.' + t.key + '.label', t.label);
         b.onclick = () => selectTab(t.key);
         tabsEl.appendChild(b);
       }
@@ -114,13 +121,13 @@
       active = key;
       const meta = TABS.find((t) => t.key === key) || TABS[0];
       for (const b of tabsEl.querySelectorAll('.discover__tab')) b.classList.toggle('is-active', b.dataset.tab === key);
-      blurbEl.textContent = meta.blurb;
-      gridEl.innerHTML = '<div class="discover__note">Loading…</div>';
+      blurbEl.textContent = tr('tabs.' + meta.key + '.blurb', meta.blurb);
+      gridEl.innerHTML = '<div class="discover__note">' + te('feed.loading', 'Loading…') + '</div>';
       let data;
       try { data = await api.get('/api/discovery/feed?tab=' + encodeURIComponent(key)); }
-      catch (e) { gridEl.innerHTML = '<div class="discover__note discover__note--bad">Couldn’t load: ' + esc(String(e)) + '</div>'; return; }
+      catch (e) { gridEl.innerHTML = '<div class="discover__note discover__note--bad">' + te('feed.loadFailed', 'Couldn’t load: {error}', { error: String(e) }) + '</div>'; return; }
       if (key !== active) return; // a newer tab click won the race
-      if (data.disabled) return renderNote('Discovery is turned off. Enable it in <b>Settings → Discovery</b>.');
+      if (data.disabled) return renderNote(trh('feed.disabled', 'Discovery is turned off. Enable it in <b>Settings → Discovery</b>.'));
       if (data.error) return renderNote(esc(data.error), true);
       lastItems = data.items || [];
       paint();
@@ -138,7 +145,7 @@
     }
 
     function renderCards(items) {
-      if (!items.length) return renderNote('Nothing here right now — try again later, or widen the window in Settings.');
+      if (!items.length) return renderNote(te('feed.empty', 'Nothing here right now — try again later, or widen the window in Settings.'));
       gridEl.innerHTML = '';
       for (const it of items) gridEl.appendChild(card(it));
     }
@@ -161,10 +168,10 @@
           '<div class="disc-card__foot">' + date + '<span class="disc-card__action"></span></div>' +
         '</div>';
       const actionEl = el.querySelector('.disc-card__action');
-      if (it.owned) actionEl.innerHTML = '<span class="disc-card__owned">✓ In collection</span>';
+      if (it.owned) actionEl.innerHTML = '<span class="disc-card__owned">' + te('card.inCollection', '✓ In collection') + '</span>';
       else {
         const add = document.createElement('button');
-        add.className = 'btn btn--ghost disc-card__add'; add.textContent = '+ Add';
+        add.className = 'btn btn--ghost disc-card__add'; add.textContent = tr('card.add', '+ Add');
         add.onclick = () => addSeries(it, add);
         actionEl.appendChild(add);
       }
@@ -173,12 +180,12 @@
 
     async function addSeries(it, btn) {
       if (it.cvVolumeId == null) return;
-      btn.disabled = true; btn.textContent = 'Adding…';
+      btn.disabled = true; btn.textContent = tr('card.adding', 'Adding…');
       let r;
       try { r = await api.post('/api/collection/add-cv', { comicvineId: it.cvVolumeId }); }
       catch (e) { r = { error: String(e) }; }
-      if (r && r.error) { btn.disabled = false; btn.textContent = '+ Add'; btn.title = r.error; return; }
-      btn.replaceWith(Object.assign(document.createElement('span'), { className: 'disc-card__owned', textContent: '✓ Added' }));
+      if (r && r.error) { btn.disabled = false; btn.textContent = tr('card.add', '+ Add'); btn.title = r.error; return; }
+      btn.replaceWith(Object.assign(document.createElement('span'), { className: 'disc-card__owned', textContent: tr('card.added', '✓ Added') }));
     }
   });
 })();

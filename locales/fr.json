@@ -1,0 +1,50 @@
+{
+  "menu": {
+    "label": "Découvrir",
+    "title": "Découvrir les comics nouveaux et à venir"
+  },
+  "settings": {
+    "intro": "Un bouton « Découvrir » dans l’en-tête ouvre les comics nouveaux et à venir, à ajouter en un clic.",
+    "windowDays": "Fenêtre nouveautés/± (jours)",
+    "upcomingDays": "À venir (jours)",
+    "cacheHours": "Cache (heures)",
+    "note": "Les flux sont mis en cache pendant cette durée pour rester rapides. « Populaires » classe les séries selon le nombre de lecteurs qui les suivent."
+  },
+  "drawer": {
+    "label": "Découvrir des comics",
+    "title": "Découvrir",
+    "westernTitle": "N’afficher que les éditeurs occidentaux (États-Unis/Royaume-Uni) ; masque les mangas et autres comics étrangers",
+    "westernOnly": "Occidentaux uniquement",
+    "close": "Fermer (Échap)"
+  },
+  "tabs": {
+    "new": {
+      "label": "Nouvelles séries",
+      "blurb": "Premiers numéros qui sortent en ce moment."
+    },
+    "latest": {
+      "label": "Dernières sorties",
+      "blurb": "Séries sorties récemment chez tous les éditeurs."
+    },
+    "foryou": {
+      "label": "Pour vous",
+      "blurb": "Nouveaux n° 1 d’éditeurs que vous collectionnez déjà."
+    },
+    "popular": {
+      "label": "Populaires",
+      "blurb": "Séries classées selon le nombre de lecteurs qui les suivent."
+    }
+  },
+  "feed": {
+    "loading": "Chargement…",
+    "loadFailed": "Chargement impossible : {error}",
+    "disabled": "La découverte est désactivée. Activez-la dans <b>Paramètres → Découverte</b>.",
+    "empty": "Rien pour le moment ; réessayez plus tard ou élargissez la fenêtre dans les paramètres."
+  },
+  "card": {
+    "inCollection": "✓ Dans la collection",
+    "add": "+ Ajouter",
+    "adding": "Ajout…",
+    "added": "✓ Ajouté"
+  }
+}
